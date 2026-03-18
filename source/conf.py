@@ -108,7 +108,7 @@ latex_documents = [
 ]
 
 # -- Options for simplepdf output --------------------------------------------
-simplepdf_title = project + ' 语音板用户指南'
+simplepdf_title = project + '语音板用户指南'
 simplepdf_use_toc = True
 simplepdf_stylesheets = ['_static/simplepdf.css']
 today = ''
