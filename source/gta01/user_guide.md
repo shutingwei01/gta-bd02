@@ -40,7 +40,7 @@ GTA1000 Series 语音板正面布局图
 
 ```{figure} /_static/images/G10006_voiceboard-back-layout-v1.png  
 :align: center  
-:width: 75%  
+:width: 90%  
 :alt: GTA01 语音板布局图背  
 
 GTA1000 Series 语音板背面布局图
