@@ -1,0 +1,11 @@
+# Sphinx 核心
+sphinx==7.2.6
+
+# Read the Docs 主题
+sphinx-rtd-theme==2.0.0
+
+# 支持 Markdown
+myst-parser==2.0.0
+
+# PDF 导出扩展
+Sphinx-SimplePDF==1.7.0

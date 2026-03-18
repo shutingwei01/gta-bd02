@@ -1,0 +1,27 @@
+
+# .readthedocs.yaml
+# Read the Docs 配置文件
+# 有关详细信息，请参阅 https://docs.readthedocs.io/en/stable/config-file/v2.html
+
+version: 2
+
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.11"
+  apt_packages: 
+    - fonts-noto-core       # 【新增】：提供完美匹配的纯西文 Noto 字体 (Noto Sans, Noto Mono 等)
+    - fonts-noto-cjk        # 必需：安装 Noto CJK 字体包，提供中文字体
+    - texlive-xetex         # 必需：安装 xelatex 编译引擎
+    - texlive-lang-chinese  # 必需：安装 ctex, xeCJK 等中文 LaTeX 宏包
+
+sphinx:
+  configuration: source/conf.py
+
+python:
+  install:
+    - requirements: requirements.txt
+
+formats:
+  - pdf
+  - htmlzip

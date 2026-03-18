@@ -1,0 +1,50 @@
+
+name: Build Official PDF Manual
+
+on:
+  push:
+    branches: [ "main", "master" ] # 当推送到主分支时触发
+  workflow_dispatch: # 允许您在 GitHub 网页上手动点击按钮生成
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4 # 已为您升级到最新的v4防报错
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5 # 已为您升级到最新的v5防报错
+      with:
+        python-version: "3.11"
+
+    - name: Install System Dependencies (LaTeX & Fonts)
+      # 这里的环境配置和我们给 RTD 配置的完全一样
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-xetex texlive-lang-chinese fonts-noto-cjk fonts-noto-core latexmk
+
+    - name: Install Python Dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Build PDF via Sphinx
+      # 调用 Sphinx 原生命令生成 PDF
+      run: |
+        sphinx-build -M latexpdf source build
+
+    - name: Extract Release Version from conf.py
+      # 【新增步骤】：自动读取 conf.py 中的 release = '1.0'，存入环境变量 DOC_VERSION
+      run: |
+        DOC_VERSION=$(grep "^release" source/conf.py | awk -F"['\"]" '{print $2}')
+        echo "提取到的文档版本号为: $DOC_VERSION"
+        echo "DOC_VERSION=$DOC_VERSION" >> $GITHUB_ENV
+
+    - name: Upload PDF Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        # 【修改点 1】：使用刚才读取的环境变量，让下载的压缩包名称也自动更新 (如 Rev.1.0_CN, Rev.1.1_CN)
+        name: GTA1000_Series_MicBoard_User_Guide_Rev.${{ env.DOC_VERSION }}_CN
+        # 【修改点 2】：使用通配符，自动抓取动态生成的带版本号的 PDF 文件
+        path: build/latex/*.pdf
