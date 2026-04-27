@@ -23,7 +23,7 @@ extensions = [
 source_suffix = {'.rst': 'restructuredtext', '.md': 'markdown'}
 templates_path = ['_templates']
 exclude_patterns = []
-language = 'zh_CN'
+language = 'en'
 
 # -- MyST-Parser 配置 --------------------------------------------------------
 myst_enable_extensions = [
@@ -48,9 +48,9 @@ autosectionlabel_prefix_document = True
 numfig = True
 numfig_secnum_depth = 1
 numfig_format = {
-    'figure': '图 %s',
-    'table': '表 %s',
-    'code-block': '代码 %s'
+    'figure': 'Figure %s',
+    'table': 'Table %s',
+    'code-block': 'Listing %s'
 }
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -60,6 +60,7 @@ latex_engine = 'xelatex'
 latex_elements = {
     'papersize': 'a4paper',
     'pointsize': '11pt',
+    'fncychap': '', 
     'preamble': r'''
 \usepackage{xeCJK}
 

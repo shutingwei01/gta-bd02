@@ -1,126 +1,130 @@
 
-> **文档版本**：V1.0 &nbsp;&nbsp;
+> **Document Version**: V1.0
 
-# 产品概述
+# Product Overview
 
-本语音板专为提供端侧语音相关功能而设计，可灵活适配各类前装或后装设备。产品具有体积小巧、接口丰富、免二次开发等优势。
+This voice board is specifically designed to provide edge-side voice functionalities and can be flexibly adapted to various pre-installed or aftermarket devices. The product features a compact form factor, rich interfaces, and requires no secondary development.
 
-## 核心功能
-* **基础语音能力**：支持离线语音识别、语音合成（TTS）播报、语音控制指令。
-* **高级对话交互**：支持全双工语音连续对话。
+## Core Features
 
-  *注：语音播报功能需搭配外部功放及扬声器使用，扬声器的型号与功率可由客户根据终端产品需求自行选型配置。*
+* **Basic Voice Capabilities**: Supports offline speech recognition, Text-to-Speech (TTS) broadcasting, and voice control commands.
+* **Advanced Conversational Interaction**: Supports full-duplex continuous voice conversation.
+  ```{note} 
+  The voice broadcasting function requires an external amplifier and speaker. The speaker model and power rating can be selected and configured by the customer based on end product requirements.
+  ```
 
+## Core Hardware Components
 
-## 核心硬件组成
-1. **GTA 主控芯片**：内置合封 LPDDR3 颗粒（512 MB），提供强大的端侧算力。
-2. **A2B Master 芯片**：用于串接麦克风阵列板
-    ```{note}
-   本语音板必须与配套麦克风板组合使用。
+1. **GTA Main Control Chip**: Built-in co-packaged LPDDR3 memory (512 MB), providing powerful edge-side computing capability.
+2. **A2B Master Chip**: Used for daisy-chaining the microphone array board.
+   ```{note}
+   This voice board must be used in combination with the matching microphone board.
    ```
-3. **独立 DAC 芯片**：提供高质量音频输出，外接功放/扬声器。
-4. **存储模块**：提供 512MB 存储空间（支持插卡式或贴片式 SD NAND 两种规格可选）。
-5. **安全保护**：板载专用加密芯片，对本地模型和固件进行硬件级加密保护。
+3. **Dedicated DAC Chip**: Provides high-quality audio output for connecting to external amplifiers/speakers.
+4. **Storage Module**: Provides 512 MB of storage space (available in either plug-in SD card or surface-mount SD NAND form factors).
+5. **Security Protection**: On-board dedicated encryption chip for hardware-level encryption protection of local models and firmware.
 
----
+# Board Layout and Module Description
 
-# 板卡布局与模块说明
+## Board Layout
 
-## 板卡布局
+```{figure} /_static/images/G10005_voiceboard-layout-v1.png
+:align: center
+:width: 70%
+:alt: GTA1000 Series Voice Board Front Layout
 
-```{figure} /_static/images/G10005_voiceboard-layout-v1.png  
-:align: center  
-:width: 70%  
-:alt: GTA01 语音板布局图  
-
-GTA1000 Series 语音板正面布局图
+GTA1000 Series Voice Board — Front Layout
 ```
 
-```{figure} /_static/images/G10006_voiceboard-back-layout-v1.png  
-:align: center  
-:width: 80%  
-:alt: GTA01 语音板布局图背  
+```{figure} /_static/images/G10006_voiceboard-back-layout-v1.png
+:align: center
+:width: 80%
+:alt: GTA1000 Series Voice Board Rear Layout
 
-GTA1000 Series 语音板背面布局图
+GTA1000 Series Voice Board — Rear Layout
 ```
 
-## 模块说明
-| 序号 | 模块名称 | 接口/元件说明 |
+## Module Description
+
+| No. | Module Name | Interface / Component Description |
 | :--- | :--- | :--- |
-| **[1]** | 12V 供电端子 | 螺丝式接线端子，12V/3A 直流输入（开关丝印 ON 为开） |
-| **[2]** | 电源总开关 | 语音板主电源拨动开关 |
-| **[3]** | Type-C 供电口 | 备用 12V/3A 供电接口（与 [1] 二选一） |
-| **[4]** | ASN Master 芯片 | 负责音频数据传输的主控芯片 |
-| **[5]** | 加密芯片 | 负责模型与固件本地加密 |
-| **[6]** | 3.5mm 音频接口 | 音频输出 DAC 接口，连接外部功放/扬声器 |
-| **[7]** | ASN 线束接口 | 专用连接座，用于对接麦克风板 |
-| **[8]** | NOR Flash | 存储基础固件程序 |
-| **[9]** | 复位按键 | 系统 Reset 按钮 |
-| **[10]** | USB-A 通信口 | 内部将串口 TTL 转为 USB 输出，对接主机设备 |
-| **[11]** | SD 卡槽 | 插入式 SD 卡座（便于更新模型和固件） |
-| **[12]** | TTL 串口端子 | 螺丝式接线端子，原生 TTL 串口通信 |
-| **[13]** | 核心板 | 包含 GTA 主芯片、晶振、核心供电电路等 |
-| **[14]** | 贴片 SD NAND | 贴片式 SD 存储（体积小，高稳定性，与 [11] 二选一） |
----
+| **[1]** | 12V Power Terminal | Screw-type terminal block, 12V/3A DC input (silk-screen "ON" = powered on) |
+| **[2]** | Main Power Switch | Main power toggle switch for the voice board |
+| **[3]** | Type-C Power Port | Backup 12V/3A power interface (use either this or **[1]**, not both) |
+| **[4]** | ASN Master Chip | Master chip responsible for audio data transmission |
+| **[5]** | Encryption Chip | Handles local encryption of models and firmware |
+| **[6]** | 3.5mm Audio Jack | DAC audio output interface for connecting an external amplifier/speaker |
+| **[7]** | ASN Cable Connector | Dedicated connector for interfacing with the microphone board |
+| **[8]** | NOR Flash | Stores basic firmware programs |
+| **[9]** | Reset Button | System reset button |
+| **[10]** | USB-A Communication Port | Built-in TTL-to-USB conversion chip; outputs USB to interface with the host device |
+| **[11]** | SD Card Slot | Plug-in SD card socket (convenient for updating models and firmware) |
+| **[12]** | TTL Serial Terminal | Screw-type terminal block for native TTL serial communication |
+| **[13]** | Core Board | Contains the GTA main chip, crystal oscillator, core power supply circuits, etc. |
+| **[14]** | Surface-Mount SD NAND | Surface-mount SD storage (compact, high stability; use either this or **[11]**, not both) |
 
-# 功能模块详解
+# Functional Module Details
 
-## 供电系统
-本语音板提供两种相互独立的 12V 供电方式（**二选一使用，不可混用**）：
-* **方式一**：通过 [1] 螺丝式端子 接入 12V 3A 直流电源。
-* **方式二**：通过 [3] Type-C 接口 连接 12V 3A 电源适配器。
-* **供电范围声明**：上述接口仅为语音主板及配套麦克风板供电。如设备外接大功率扬声器，需客户为扬声器/功放单独提供合适的供电与开关控制。本语音板的 [2] 电源总开关仅控制自身启停。
+## Power Supply System
 
-## 麦克风与音频输出
-* **拾音输入**：通过 [7] ASN线束接口连接麦克风阵列板。麦克风板的规格（如阵列构型）及线束长度可根据具体产品形态定制。
-* **音频输出**：通过 [6] 3.5mm 音频接口外接功放或有源扬声器。设备外观、体积、音量要求由产品需求决定。
+This voice board provides two independent 12V power supply methods (**select one only; do not use simultaneously**):
 
-## 数据通信与接口
-本语音板采用 USART 串口与客户设备主机进行通信交互（波特率等通信参数支持软件配置）。提供两种物理连接方式：
-* **USB-A 接口 [10]**：板载 TTL 转 USB 芯片，通过 USB 线缆直连客户设备，适用于仅有 USB 接口的主控机。
-* **TTL 端子 [12]**：原生接线端子，可直接使用 TTL 电平通信，也可外接 RS232 / RS485 转接模块，适用于具备传统工业串口的设备。
+* **Option 1**: Connect a 12V/3A DC power source via the **[1]** screw terminal.
+* **Option 2**: Connect a 12V/3A power adapter via the **[3]** Type-C port.
+* **Power Scope Notice**: The above interfaces supply power only to the voice main board and the matching microphone board. If the device uses a high-power external speaker, the customer must provide a separate power supply and switching control for the speaker/amplifier. The **[2]** main power switch on this board controls only the voice board itself.
 
-## 存储方案选择
-为适应不同应用场景，本语音板提供两种 SD 存储介质选项：
-1. **插卡式 SD 卡 [11]**：优势在于插拔便捷，方便后期手动更新算法模型和固件，适合部署在固定不动、无剧烈震动的设备中。
-2. **贴片式 SD NAND [14]**：直接焊接在核心板上。优势是体积小巧、抗震动、稳定性极高；缺点是卡内文件更新须通过特定软件接口写入。
+## Microphone and Audio Output
 
----
+* **Audio Input**: Connect the microphone array board via the **[7]** ASN cable connector. The microphone board specifications (e.g., array configuration) and cable length can be customized to suit the specific product form factor.
+* **Audio Output**: Connect an external amplifier or active speaker via the **[6]** 3.5mm audio jack. Device appearance, dimensions, and volume requirements are determined by product needs.
 
-# 安装与使用指南
+## Data Communication and Interfaces
 
-## 典型安装步骤
-1. **固定主板**：将本语音板通过四周定位孔，使用螺丝固定安装在目标设备机壳内部。
-2. **连接麦克风**：将专用线束的一端插入 [7] ASN 接口，并根据设备内部结构理线。将配套麦克风板固定在设备外壳预留的拾音开孔位置。
-3. **连接扬声器**：将扬声器音频线接入 [6] 3.5mm 音频接口，并将扬声器固定在设备内部。
+This voice board communicates with the customer's host device via a USART serial interface (baud rate and other parameters are software-configurable). Two physical connection methods are available:
+
+* **USB-A Port [10]**: Built-in TTL-to-USB chip; connects directly to the customer's device via a USB cable. Suitable for host controllers that only have USB interfaces.
+* **TTL Terminal [12]**: Native screw terminal; supports direct TTL-level communication or connection to an external RS232/RS485 adapter module. Suitable for devices with traditional industrial serial ports.
+
+## Storage Solution
+
+To accommodate different application scenarios, this voice board offers two SD storage options:
+
+1. **Plug-in SD Card [11]**: Easy to insert and remove, making it convenient for manually updating algorithm models and firmware in the field. Recommended for stationary devices not subject to severe vibration.
+2. **Surface-Mount SD NAND [14]**: Soldered directly onto the core board. Advantages include compact size, vibration resistance, and high stability. The trade-off is that card content must be updated via a dedicated software interface.
+
+# Installation and Usage Guide
+
+## Typical Installation Steps
+
+1. **Secure the Main Board**: Mount the voice board inside the target device enclosure using screws through the positioning holes around the perimeter of the board.
+2. **Connect the Microphone**: Insert one end of the dedicated cable into the **[7]** ASN connector and route the cable according to the device's internal structure. Secure the matching microphone board at the pre-cut audio pickup opening on the device enclosure.
+3. **Connect the Speaker**: Plug the speaker audio cable into the **[6]** 3.5mm audio jack and mount the speaker inside the device.
 
    ```{note}
-   声学隔离要求，扬声器安装位置应尽量远离麦克风拾音孔，避免回声干扰。
+   Acoustic isolation: Position the speaker as far as possible from the microphone pickup opening to minimize echo interference.
    ```
 
-4. **插入存储卡**：如选用插卡方案，请确认 SD 卡已正确推入 [11] SD卡槽。
-5. **连接通信线**：根据目标设备的接口类型，使用 USB 线连接 [10] 接口，或使用连接线将 232/485 等通信模块连接至 [12] 端子。
-6. **接入电源**：确认 [2] 电源开关 处于关闭状态后，接入 12V 供电（Type-C 或端子）。若扬声器需要独立供电，请同步接好。
-7. **开机调试**：拨开电源开关 [2] 进行上电测试。
+4. **Insert the Storage Card**: If using the plug-in SD card solution, ensure the SD card has been correctly pushed into the **[11]** SD card slot.
+5. **Connect Communication Cable**: Based on the target device's interface type, use a USB cable to connect to the **[10]** USB-A port, or connect a RS232/RS485 or other serial communication module to the **[12]** terminal.
+6. **Connect Power**: Confirm the **[2]** power switch is in the OFF position, then connect the 12V power supply (via Type-C or screw terminal). If the speaker requires independent power, connect it at the same time.
+7. **Power On and Test**: Toggle the **[2]** power switch to ON and begin functional testing.
 
 ```{note}
-对于初次集成的客户，我司可提供专业的技术支持与上门安装调试服务。
+For first-time integration customers, we can provide professional technical support and on-site installation and commissioning services.
 ```
 
----
+# Packaging and Accessories List *(TBD)*
 
-# 包装与配件清单 (待定)
+Accessory packages will be configured flexibly based on the customer's final requirements. The following lists the standard categories:
 
-根据客户最终需求，我们将提供灵活的配件选配包。以下为常规配置分类：
+**Standard Package**
+* GTA1000 Voice Main Board PCBA
+* Microphone Array Board (specifications selectable)
+* ASN Dedicated Connection Cable
+* 12V Power Adapter
 
-**【标配清单】**
-* GTA1000 语音主板 PCBA
-* 麦克风阵列板 (规格自选)
-* ASN 专用连接线束
-* 12V 电源适配器
-
-**【选配附件】**
-* 通信转接模块 (RS232/RS485)
-* 插卡式 SD 卡 (含预装模型)
-* 有源功放扬声器
-* USB-A 通信数据线
+**Optional Accessories**
+* Communication Adapter Module (RS232/RS485)
+* Plug-in SD Card (with pre-loaded models)
+* Active Amplified Speaker
+* USB-A Communication Data Cable
