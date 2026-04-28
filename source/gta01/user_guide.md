@@ -16,7 +16,7 @@ This voice board is specifically designed to provide edge-side voice functionali
 ## Core Hardware Components
 
 1. **GTA Main Control Chip**: Built-in co-packaged LPDDR3 memory (512 MB), providing powerful edge-side computing capability.
-2. **A2B Master Chip**: Used for daisy-chaining the microphone array board.
+2. **A2N Master Chip**: Used for daisy-chaining the microphone array board.
    ```{note}
    This voice board must be used in combination with the matching microphone board.
    ```

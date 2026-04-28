@@ -4,11 +4,11 @@
 GTA1000 Series
 ==============================
 
-欢迎查阅 GTA1000 Series 开发板技术文档。
+Welcome to the GTA1000 Series development board technical documentation.
 
 .. toctree::
    :maxdepth: 2
-   :caption: GTA1000 Series 语音板用户指南
+   :caption: GTA1000 Series Voice Board User Guide
    :numbered:
 
    gta01/user_guide
