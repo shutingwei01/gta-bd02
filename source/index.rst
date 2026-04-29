@@ -1,11 +1,19 @@
+
 .. _main-index:
 
 ==============================
 GTA1000 Series
 ==============================
-.. only:: html
+
+.. raw:: latex
+
+   \PDFHideContent{
 
 欢迎查阅 GTA1000 Series 开发板技术文档。
+
+.. raw:: latex
+
+   }
 
 .. toctree::
    :maxdepth: 2

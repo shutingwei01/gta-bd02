@@ -191,6 +191,10 @@ latex_elements = {
 \renewcommand{\sphinxstyletheadfamily}{\bfseries\sffamily}
 
 % ==========================================
+\newcommand{\PDFHideContent}[1]{}
+% ==========================================
+
+% ==========================================
 % Force hide author and date on the cover page
 % ==========================================
 \makeatletter
